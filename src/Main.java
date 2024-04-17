@@ -11,7 +11,7 @@ public class Main {
             System.out.println("3) Configuració");
             System.out.println("4) Sortir");
 
-            System.out.println("Escull una opció:");
+            System.out.println("Escull una opció: ");
             int opció_seleccionada = sc.nextInt();
 
             switch(opció_seleccionada) {
