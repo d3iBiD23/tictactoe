@@ -14,5 +14,19 @@ public class Main {
         System.out.println("Escull una opció:");
         int opció_seleccionada = sc.nextInt();
 
+        switch(opció_seleccionada){
+            case 1:
+                System.out.println("Nova partida");
+                break;
+            case 2:
+                System.out.println("Carregar Partida");
+                break;
+            case 3:
+                System.out.println("Configuració");
+                break;
+            case 4:
+                System.out.println("Sortir");
+                break;
+        }
     }
 }
