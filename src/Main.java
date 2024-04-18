@@ -7,8 +7,8 @@ public class Main {
         boolean salir = false;
 
         while (!salir) {
-            System.out.println("TIC-TAC-TOE \n");
-            System.out.println("------------- \n");
+            System.out.println("TIC-TAC-TOE");
+            System.out.println("-------------");
             System.out.println("1) Nova Partida");
             System.out.println("2) Carregar Partida");
             System.out.println("3) Configuració");
