@@ -6,7 +6,7 @@ public class TUI {
 
     public short mostrar_menu() {
         sc = new Scanner(System.in);
-        short opcio_seleccionada = 0;
+        short opcio_seleccionada;
 
         System.out.println("TIC-TAC-TOE");
         System.out.println("-------------");
@@ -18,6 +18,7 @@ public class TUI {
         System.out.println("Escull una opció: ");
 
         while (true) {
+
             try {
                 opcio_seleccionada = sc.nextShort();
 
@@ -33,16 +34,15 @@ public class TUI {
                         mostrar_menu();
                     case 4:
                         System.out.println("Has escollit: Sortir.");
-                        System. exit(0);
-                        break;
+                        System.exit(0);
                     default:
-                        System.out.println("Opció no vàlida. Torna a intentar.");
-                        mostrar_menu();
+                        System.out.println("Opció no vàlida, torna a intentar.");
+                        break;
                 }
             } catch (InputMismatchException ex) {
+                System.out.println("Opció no vàlida, torna a intentar.");
                 mostrar_menu();
             }
         }
-        return opcio_seleccionada;
     }
 }
