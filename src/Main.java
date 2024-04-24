@@ -22,10 +22,10 @@ public class Main {
             try {
                 switch (tui.mostrar_menu()) {
                     case 1:
-                        novaPartida();
+                        nova_partida();
                         tui.mostrar_menu();
                     case 2:
-                        carregarPartida();
+                        carregar_partida();
                         tui.mostrar_menu();
                     case 3:
                         configuracio();
@@ -42,10 +42,10 @@ public class Main {
             }
         }
     }
-    private static void novaPartida(){
+    private static void nova_partida(){
 
     }
-    private static void carregarPartida(){
+    private static void carregar_partida(){
 
     }
     private static void configuracio(){
