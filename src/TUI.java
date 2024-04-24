@@ -6,7 +6,6 @@ public class TUI {
 
     public short mostrar_menu() {
         sc = new Scanner(System.in);
-        boolean sortir = false;
         short opcio_seleccionada = 0;
 
         System.out.println("TIC-TAC-TOE");
@@ -18,34 +17,32 @@ public class TUI {
 
         System.out.println("Escull una opció: ");
 
-        while (!sortir) {
-
+        while (true) {
             try {
                 opcio_seleccionada = sc.nextShort();
 
                 switch (opcio_seleccionada) {
                     case 1:
-                        System.out.println("Has escollit: Nova Partida");
-                        break;
+                        System.out.println("Has escollit: Nova Partida.");
+                        mostrar_menu();
                     case 2:
-                        break;
+                        System.out.println("Has escollit: Carregar Partida.");
+                        mostrar_menu();
                     case 3:
-                        op3();
-                        break;
+                        System.out.println("Has escollit: Configuració.");
+                        mostrar_menu();
                     case 4:
-                        sortir();
-
-                        sortir = true;
+                        System.out.println("Has escollit: Sortir.");
+                        System. exit(0);
                         break;
                     default:
                         System.out.println("Opció no vàlida. Torna a intentar.");
-                        break;
+                        mostrar_menu();
                 }
             } catch (InputMismatchException ex) {
-                sc.nextLine();
+                mostrar_menu();
             }
         }
-        sc.close();
-        return (short)opcio_seleccionada;
+        return opcio_seleccionada;
     }
 }
