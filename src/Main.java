@@ -1,45 +1,56 @@
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        boolean salir = false;
+        TUI tui = new TUI();
 
-        while (!salir) {
-            System.out.println("TIC-TAC-TOE");
-            System.out.println("-------------");
-            System.out.println("1) Nova Partida");
-            System.out.println("2) Carregar Partida");
-            System.out.println("3) Configuració");
-            System.out.println("4) Sortir");
+        tui.mostrar_menu(); // retorna opció
 
-            System.out.println("Escull una opció: ");
+        // CREAR SPRINT, CREAR USERSTORY,
+        // LEER ENUNCIADO Y METERLO AL USERSTORY.
+        //
+        //
+        // - VER EN QUE PUNTO ESTAMOS
+        //      PARA PODER SABER TASQUES (ATOMIQUES, TREBALL EN PARALEL)
+        // LUNES 29/04 TIENE QUE ESTAR ACABADO
+        //
+        // TENER EN CUENTA TASQUES EN GIT Y TAIGA (DETALLADOS)
+
+        while (tui.mostrar_menu() != 4) {
+
             try {
-                int opcio_seleccionada = sc.nextInt();
-
-                switch (opcio_seleccionada) {
+                switch (tui.mostrar_menu()) {
                     case 1:
-                        System.out.println("Has escollit: Nova partida");
+                        novaPartida();
                         break;
                     case 2:
-                        System.out.println("Has escollit: Carregar Partida");
+                        carregarPartida();
                         break;
                     case 3:
-                        System.out.println("Has escollit: Configuració");
+                        configuracio();
                         break;
                     case 4:
-                        System.out.println("Has escollit: Sortir");
-                        salir = true; // Sortir del bucle
+                        sortir();
                         break;
                     default:
                         System.out.println("Opció no vàlida. Torna a intentar.");
                         break;
                 }
             } catch (InputMismatchException ex) {
-                sc.nextLine();
+                tui.mostrar_menu();
             }
         }
-        sc.close();
+    }
+    private static void novaPartida(){
+
+    }
+    private static void carregarPartida(){
+
+    }
+    private static void configuracio(){
+
+    }
+    private static void sortir(){
+
     }
 }
