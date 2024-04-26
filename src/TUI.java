@@ -1,3 +1,5 @@
+import jdk.jshell.spi.ExecutionControl;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -44,5 +46,8 @@ public class TUI {
                 mostrar_menu();
             }
         }
+    }
+    public void mostrarTaulell() throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("Mètode no creat");
     }
 }
