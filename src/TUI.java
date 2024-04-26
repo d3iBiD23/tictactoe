@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class TUI {
     private Scanner sc;
 
-    public short mostrar_menu() {
+    public short mostrarMenu() {
         sc = new Scanner(System.in);
         short opcio_seleccionada;
 
@@ -27,13 +27,13 @@ public class TUI {
                 switch (opcio_seleccionada) {
                     case 1:
                         System.out.println("Has escollit: Nova Partida.");
-                        mostrar_menu();
+                        mostrarMenu();
                     case 2:
                         System.out.println("Has escollit: Carregar Partida.");
-                        mostrar_menu();
+                        mostrarMenu();
                     case 3:
                         System.out.println("Has escollit: Configuració.");
-                        mostrar_menu();
+                        mostrarMenu();
                     case 4:
                         System.out.println("Has escollit: Sortir.");
                         System.exit(0);
@@ -43,7 +43,7 @@ public class TUI {
                 }
             } catch (InputMismatchException ex) {
                 System.out.println("Opció no vàlida, torna a intentar.");
-                mostrar_menu();
+                mostrarMenu();
             }
         }
     }

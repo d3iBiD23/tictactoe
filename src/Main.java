@@ -17,20 +17,20 @@ public class Main {
         //
         // MAIN HECHO
 
-        tui.mostrar_menu();
+        tui.mostrarMenu();
 
-        while (tui.mostrar_menu() != 4) {
+        while (tui.mostrarMenu() != 4) {
             try {
-                switch (tui.mostrar_menu()) {
+                switch (tui.mostrarMenu()) {
                     case 1:
-                        nova_partida();
-                        tui.mostrar_menu();
+                        novaPartida();
+                        tui.mostrarMenu();
                     case 2:
-                        carregar_partida();
-                        tui.mostrar_menu();
+                        carregarPartida();
+                        tui.mostrarMenu();
                     case 3:
                         configuracio();
-                        tui.mostrar_menu();
+                        tui.mostrarMenu();
                     case 4:
                         sortir();
                         break;
@@ -39,15 +39,15 @@ public class Main {
                         break;
                 }
             } catch (InputMismatchException ex) {
-                tui.mostrar_menu();
+                tui.mostrarMenu();
             }
         }
     }
-    private static void nova_partida() throws ExecutionControl.NotImplementedException {
+    private static void novaPartida() throws ExecutionControl.NotImplementedException {
         throw new ExecutionControl.NotImplementedException("Metode no creat");
 
     }
-    private static void carregar_partida() throws ExecutionControl.NotImplementedException {
+    private static void carregarPartida() throws ExecutionControl.NotImplementedException {
         throw new ExecutionControl.NotImplementedException("Metode no creat");
     }
     private static void configuracio() throws ExecutionControl.NotImplementedException{
