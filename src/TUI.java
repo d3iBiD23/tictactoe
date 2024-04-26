@@ -47,7 +47,13 @@ public class TUI {
             }
         }
     }
-    public void mostrarTaulell() throws ExecutionControl.NotImplementedException {
+    public void mostrarTaulell(char[][] taulell, short turn) throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("Mètode no creat");
+    }
+    public short[][] recollirJugada() throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("Mètode no creat");
+    }
+    public short fiDePartida(short guanyador) throws ExecutionControl.NotImplementedException {
         throw new ExecutionControl.NotImplementedException("Mètode no creat");
     }
 }
