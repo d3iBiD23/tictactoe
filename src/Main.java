@@ -1,5 +1,4 @@
 import jdk.jshell.spi.ExecutionControl;
-
 import java.util.InputMismatchException;
 
 public class Main {
@@ -44,16 +43,17 @@ public class Main {
             }
         }
     }
-    private static void nova_partida(){
+    private static void nova_partida() throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("Metode no creat");
 
     }
-    private static void carregar_partida(){
-
+    private static void carregar_partida() throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("Metode no creat");
     }
-    private static void configuracio(){
-
+    private static void configuracio() throws ExecutionControl.NotImplementedException{
+        throw new ExecutionControl.NotImplementedException("Metode no creat");
     }
-    private static void sortir(){
-
+    private static void sortir() throws ExecutionControl.NotImplementedException  {
+        throw new ExecutionControl.NotImplementedException("Metode no creat");
     }
 }
