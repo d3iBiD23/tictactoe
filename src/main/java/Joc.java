@@ -33,9 +33,9 @@ public class Joc {
         // Comprobar si la primera casilla es buida
         if (taulell[0][0] == '·'){
             if (torn == 1){
-                taulell[0][0] = 'x'; // Primer jugador coloca
+                taulell[0][0] = 'X'; // Primer jugador coloca
             } else if (torn == 2) {
-                taulell[0][0] = 'o'; // Segon jugador coloca
+                taulell[0][0] = 'O'; // Segon jugador coloca
             }
         }
     }

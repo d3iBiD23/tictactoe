@@ -7,6 +7,8 @@ public class JocTest {
     @Test
     void testNovaPartida_taulell() {
         Joc joc = new Joc();
+        joc.novaPartida();
+
         char[][] taulellNet = {
                 {'·','·','·'},
                 {'·','·','·'},
@@ -19,6 +21,8 @@ public class JocTest {
     @Test
     void testNovaPartida_torn() {
         Joc joc = new Joc();
+        joc.novaPartida();
+
         Assertions.assertEquals(1, joc.getTorn());
     }
 
@@ -30,6 +34,8 @@ public class JocTest {
     @Test
     void jugar_torn1() {
         Joc joc = new Joc();
+        joc.novaPartida();
+        joc.jugar((short) 3,(short) 3);
 
         char[][] taulell_torn1 = {
                 {'X','·','·'},
@@ -44,6 +50,8 @@ public class JocTest {
     @Test
     void jugar_torn2() {
         Joc joc = new Joc();
+        joc.novaPartida();
+        joc.jugar((short) 3,(short) 3);
 
         char[][] taulell_torn2 = {
                 {'O','·','·'},
@@ -52,6 +60,6 @@ public class JocTest {
         };
 
         Assertions.assertArrayEquals(taulell_torn2, joc.getTaulell());
-        Assertions.assertEquals(2, joc.getTorn());
+        Assertions.assertEquals(1, joc.getTorn());
     }
 }
