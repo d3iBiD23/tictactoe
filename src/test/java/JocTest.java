@@ -27,7 +27,7 @@ public class JocTest {
     }
 
     @Test
-    void testJugadaGuanyadora() {
+    void testJugadaGuanyadora_taulell_net() {
 
     }
 
