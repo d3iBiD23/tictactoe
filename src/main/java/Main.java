@@ -2,6 +2,7 @@ import jdk.jshell.spi.ExecutionControl;
 import java.util.InputMismatchException;
 
 public class Main {
+    static Joc joc = new Joc();
     public static void main(String[] args) {
         TUI tui = new TUI();
 
@@ -43,9 +44,8 @@ public class Main {
             }
         }
     }
-    private static void novaPartida() throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("Metode no creat");
-
+    private static void novaPartida()  {
+        joc.novaPartida();
     }
     private static void carregarPartida() throws ExecutionControl.NotImplementedException {
         throw new ExecutionControl.NotImplementedException("Metode no creat");
