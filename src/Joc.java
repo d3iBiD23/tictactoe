@@ -13,12 +13,15 @@ public class Joc {
     }
 
     public void novaPartida(){
-       char[][] taulell = new char[3][3];
+       // genera un taulell de 3x3 amb punts
+       taulell = new char[3][3];
        for (int i = 0; i < taulell.length; i++){
            for (int j = 0; j < taulell.length; j++){
                taulell [i][j] = '·';
            }
        }
+        // Inicia la partida amb el torn 1, es a dir, el nostre torn
+       torn = 1;
     }
 
     public boolean jugadaGuanyadora(short fila, short columna) throws ExecutionControl.NotImplementedException{
