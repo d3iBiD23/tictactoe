@@ -41,6 +41,8 @@ public class Main {
                 }
             } catch (InputMismatchException ex) {
                 tui.mostrarMenu();
+            } catch (ExecutionControl.NotImplementedException e) {
+                throw new RuntimeException(e);
             }
         }
     }
