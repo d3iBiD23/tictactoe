@@ -1,9 +1,10 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class JocTest {
 
     // Comprovar que el tablero se genera limpio (nadie ha jugado)
-    @org.junit.jupiter.api.Test
+    @Test
     void testNovaPartida_taulell() {
         Joc joc = new Joc();
         char[][] taulellNet = {
@@ -15,18 +16,18 @@ public class JocTest {
     }
 
     // Comprovar que es el turno 1
-    @org.junit.jupiter.api.Test
+    @Test
     void testNovaPartida_torn() {
         Joc joc = new Joc();
         Assertions.assertEquals(1, joc.getTorn());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testJugadaGuanyadora() {
 
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void jugar_torn1() {
         Joc joc = new Joc();
 
@@ -40,7 +41,7 @@ public class JocTest {
         Assertions.assertEquals(1, joc.getTorn());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void jugar_torn2() {
         Joc joc = new Joc();
 
