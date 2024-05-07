@@ -2,21 +2,26 @@ import org.junit.jupiter.api.Assertions;
 
 public class JocTest {
 
+    // Comprovar que el tablero se genera limpio (nadie ha jugado)
     @org.junit.jupiter.api.Test
-    void testNovaPartida() {
+    void testNovaPartida_taulell() {
         Joc joc = new Joc();
+        char[][] taulellNet = {
+                {'·','·','·'},
+                {'·','·','·'},
+                {'·','·','·'}
+        };
+        Assertions.assertArrayEquals(taulellNet,joc.getTaulell());
+    }
 
-        char[][] taulellNet = joc.getTaulell();
-        // Comprovar que el tablero se genera limpio (nadie ha jugado)
-        for (int i = 0; i < joc.getTaulell().length; i++){
-            for (int j = 0; j < joc.getTaulell().length; j++){
-                Assertions.assertEquals('·', taulellNet[i][j]);
-            }
-        }
-
-        // Comprovar que es el turno 1
+    // Comprovar que es el turno 1
+    @org.junit.jupiter.api.Test
+    void testNovaPartida_torn() {
+        Joc joc = new Joc();
         Assertions.assertEquals(1, joc.getTorn());
     }
+
+
 
     @org.junit.jupiter.api.Test
     void testJugadaGuanyadora() {
