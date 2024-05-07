@@ -21,30 +21,36 @@ public class JocTest {
         Assertions.assertEquals(1, joc.getTorn());
     }
 
-
-
     @org.junit.jupiter.api.Test
     void testJugadaGuanyadora() {
 
     }
 
     @org.junit.jupiter.api.Test
-    void jugar() {
+    void jugar_torn1() {
         Joc joc = new Joc();
 
-        char[][] taulell = joc.getTaulell();
+        char[][] taulell_torn1 = {
+                {'X','·','·'},
+                {'·','·','·'},
+                {'·','·','·'}
+        };
 
-        assett array equals()
-        /*
-        Comprovem que es posa una fitxa qualsevol a la primera casella,
-        tenint en compte que està buit.
-         */
+        Assertions.assertArrayEquals(taulell_torn1, joc.getTaulell());
+        Assertions.assertEquals(1, joc.getTorn());
+    }
 
-        // no bucles asseerton
+    @org.junit.jupiter.api.Test
+    void jugar_torn2() {
+        Joc joc = new Joc();
 
-        Assertions.assertEquals('x', taulell[0][0]);
+        char[][] taulell_torn2 = {
+                {'O','·','·'},
+                {'·','·','·'},
+                {'·','·','·'}
+        };
 
-        Assertions.assertEquals('o', taulell[0][0]);
-
+        Assertions.assertArrayEquals(taulell_torn2, joc.getTaulell());
+        Assertions.assertEquals(2, joc.getTorn());
     }
 }
