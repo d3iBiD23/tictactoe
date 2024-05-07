@@ -29,14 +29,19 @@ public class Joc {
     }
 
     public void jugar(short fila, short columna) {
-
         // Comprobar si la primera casilla es buida
         if (taulell[0][0] == '·'){
             if (torn == 1){
-                taulell[0][0] = 'X'; // Primer jugador coloca
-            } else if (torn == 2) {
-                taulell[0][0] = 'O'; // Segon jugador coloca
+                taulell[0][0] = 'X';
+                torn = 2; // Primer jugador coloca
             }
         }
+        if (taulell[0][0] == '·'){
+            if (torn == 2) {
+                taulell[0][1] = 'O'; // Segon jugador coloca
+                torn = 1;
+            }
+        }
+
     }
 }
