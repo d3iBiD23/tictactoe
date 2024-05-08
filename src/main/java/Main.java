@@ -3,8 +3,9 @@ import java.util.InputMismatchException;
 
 public class Main {
     static Joc joc = new Joc();
+    static TUI tui = new TUI();
+
     public static void main(String[] args) {
-        TUI tui = new TUI();
 
         // CREAR SPRINT, CREAR USERSTORY,
         // LEER ENUNCIADO Y METERLO AL USERSTORY.
