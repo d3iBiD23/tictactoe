@@ -24,24 +24,20 @@ public class Joc {
        torn = 1;
     }
 
-    public boolean jugadaGuanyadora(short fila, short columna) throws ExecutionControl.NotImplementedException{
-        throw new ExecutionControl.NotImplementedException("Mètode no creat");
+    public boolean jugadaGuanyadora(short fila, short columna) throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("Metode no creat");
     }
 
     public void jugar(short fila, short columna) {
         // Comprobar si la primera casilla es buida
-        if (taulell[0][0] == '·'){
+        if (taulell[fila][columna] == '·'){
             if (torn == 1){
-                taulell[0][0] = 'X';
+                taulell[fila][columna] = 'X';
                 torn = 2; // Primer jugador coloca
-            }
-        }
-        if (taulell[0][0] == '·'){
-            if (torn == 2) {
-                taulell[0][1] = 'O'; // Segon jugador coloca
+            } else if (torn == 2) {
+                taulell[fila][columna] = 'O';
                 torn = 1;
             }
         }
-
     }
 }
