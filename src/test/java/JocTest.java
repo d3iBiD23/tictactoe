@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class JocTest {
 
@@ -59,8 +61,42 @@ public class JocTest {
                 {'·','·','·'},
                 {'·','·','·'}
         };
-
         Assertions.assertArrayEquals(taulell_torn2, joc.getTaulell());
         Assertions.assertEquals(1, joc.getTorn());
+    }
+
+    @ParameterizedTest
+    @CsvSource({"0,0","0,1","0,2","1,0","1,1","1,2","2,0","2,1","2,2"})
+    void jugar_cualsevol_pos_j1(short fila, short columna){
+        Joc joc = new Joc();
+        joc.novaPartida();
+        joc.jugar(fila,columna);
+
+        char[][] taulell_esperat = {
+                {'·','·','·'},
+                {'·','·','·'},
+                {'·','·','·'}
+        };
+
+        taulell_esperat[fila][columna] = 'X';
+        Assertions.assertArrayEquals(taulell_esperat, joc.getTaulell());
+    }
+
+    @ParameterizedTest
+    @CsvSource({"0,1","0,2","1,0","1,1","1,2","2,0","2,1","2,2"})
+    void jugar_cualsevol_pos_j2(short fila, short columna){
+        Joc joc = new Joc();
+        joc.novaPartida();
+        joc.jugar((short)0,(short)0);
+        joc.jugar(fila,columna);
+
+        char[][] taulell_esperat = {
+                {'X','·','·'},
+                {'·','·','·'},
+                {'·','·','·'}
+        };
+
+        taulell_esperat[fila][columna] = 'O';
+        Assertions.assertArrayEquals(taulell_esperat, joc.getTaulell());
     }
 }
