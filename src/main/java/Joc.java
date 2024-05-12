@@ -28,16 +28,15 @@ public class Joc {
         throw new ExecutionControl.NotImplementedException("Metode no creat");
     }
 
-    public void jugar(short fila, short columna) {
+    // DEVOLVER BOOL PARA COMPROBAR SI SE HA PODIDO PONER FICHA O NO
+    public boolean jugar(short fila, short columna) {
+
         // Comprobar si la primera casilla es buida
         if (taulell[fila][columna] == '·'){
-            if (torn == 1){
-                taulell[fila][columna] = 'X';
-                torn = 2; // Primer jugador coloca
-            } else if (torn == 2) {
-                taulell[fila][columna] = 'O';
-                torn = 1;
-            }
+            taulell[fila][columna] = (torn == 1) ? 'X' : 'O';
+            torn = (torn == 1 ) ? (short) 2: (short) 1;
+            return true; // jugada exitosa
         }
+        return false; // Casella ja ocupada
     }
 }

@@ -50,9 +50,31 @@ public class TUI {
             }
         }
     }
-    public short[][] recollirJugada() throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("Mètode no creat");
+     public short[] recollirJugada(Joc joc) {
+        short fila = -1; // Inicialitza fila amb un valor per defecte, en aquest cas -1.
+        short columna = -1; // Inicialitza columna amb un valor per defecte, en aquest cas -1.
+        boolean jugadaExitosa = false;
+
+        while (!jugadaExitosa){
+            try {
+                System.out.println("Introdueix la fila (0, 1, 2): ");
+                fila = sc.nextShort();
+                System.out.println("Introdueix la columna (0, 1, 2): ");
+                columna = sc.nextShort();
+
+                jugadaExitosa = joc.jugar(fila,columna);
+
+                if (!jugadaExitosa){
+                    System.out.println("La casella ja està ocupada. Si us plau, torna a intentar-ho.");
+                }
+            }catch (InputMismatchException ex){
+                sc.next(); // Netejar entrada no vàlida
+                System.out.println("Entrada invàlida, si us plau, torna a intentar-ho.");
+            }
+        }
+        return new short[]{fila,columna};
     }
+
     public short fiDePartida(short guanyador) throws ExecutionControl.NotImplementedException {
         throw new ExecutionControl.NotImplementedException("Mètode no creat");
     }
