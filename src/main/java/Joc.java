@@ -96,4 +96,5 @@ public class Joc {
         }
         return false; // Casella ja ocupada
     }
+
 }
