@@ -163,7 +163,7 @@ public class JocTest {
 
     @ParameterizedTest
     @CsvSource({"0,0","0,1","0,2","1,0","1,1","1,2","2,0","2,1","2,2"})
-    void jugar_cualsevol_pos_j1(short fila, short columna){
+    void jugar_qualsevol_pos_j1(short fila, short columna){
         Joc joc = new Joc();
         joc.novaPartida();
         joc.jugar(fila,columna);
@@ -180,7 +180,7 @@ public class JocTest {
 
     @ParameterizedTest
     @CsvSource({"0,1","0,2","1,0","1,1","1,2","2,0","2,1","2,2"})
-    void jugar_cualsevol_pos_j2(short fila, short columna){
+    void jugar_qualsevol_pos_j2(short fila, short columna){
         Joc joc = new Joc();
         joc.novaPartida();
         joc.jugar((short)0,(short)0);

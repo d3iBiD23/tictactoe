@@ -8,7 +8,6 @@ public class TUI {
 
     public short mostrarMenu() {
         sc = new Scanner(System.in);
-        short opcio_seleccionada;
 
         System.out.println("TIC-TAC-TOE");
         System.out.println("-------------");
@@ -19,34 +18,15 @@ public class TUI {
 
         System.out.println("Escull una opció: ");
 
-        while (true) {
-
-            try {
-                opcio_seleccionada = sc.nextShort();
-
-                switch (opcio_seleccionada) {
-                    case 1:
-                        System.out.println("Has escollit: Nova Partida.");
-                        mostrarMenu();
-                    case 2:
-                        System.out.println("Has escollit: Carregar Partida.");
-                        mostrarMenu();
-                    case 3:
-                        System.out.println("Has escollit: Configuració.");
-                        mostrarMenu();
-                    case 4:
-                        System.out.println("Has escollit: Sortir.");
-                        System.exit(0);
-                    default:
-                        System.out.println("Opció no vàlida, torna a intentar.");
-                        break;
-                }
-            } catch (InputMismatchException ex) {
-                System.out.println("Opció no vàlida, torna a intentar.");
-                mostrarMenu();
-            }
+        try {
+            return sc.nextShort();
+        }catch (InputMismatchException ex){
+            sc.next();  // netejar entrada no vàlida
+            return -1;
         }
     }
+
+
     public void mostrarTaulell(char[][] taulell, short turn) throws ExecutionControl.NotImplementedException {
         throw new ExecutionControl.NotImplementedException("Mètode no creat");
     }

@@ -7,18 +7,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // CREAR SPRINT, CREAR USERSTORY,
-        // LEER ENUNCIADO Y METERLO AL USERSTORY.
-        //
-        //
-        // - VER EN QUE PUNTO ESTAMOS
-        //      PARA PODER SABER TASQUES (ATOMIQUES, TREBALL EN PARALEL)
-        // LUNES 29/04 TIENE QUE ESTAR ACABADO
-        //
-        // TENER EN CUENTA TASQUES EN GIT Y TAIGA (DETALLADOS)
-        //
-        // MAIN HECHO
-
         tui.mostrarMenu();
 
         while (tui.mostrarMenu() != 4) {
