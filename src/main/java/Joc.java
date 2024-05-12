@@ -24,8 +24,65 @@ public class Joc {
        torn = 1;
     }
 
-    public boolean jugadaGuanyadora(short fila, short columna) throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("Metode no creat");
+    public boolean jugadaGuanyadora(short fila, short columna)  {
+        char jugador = taulell[fila][columna];
+
+        // Si la casella esta buida, no pot haver-hi victoria
+        if (jugador == '·'){
+            return false;
+        }
+
+        // Verificar victoria horitzontal
+        boolean victoriaHoritzontal = true;
+        for (int j = 0; j < 3; j++){
+            if (taulell[fila][j] != jugador){
+                victoriaHoritzontal = false;
+                break;
+            }
+        }
+        if (victoriaHoritzontal){
+            return true;
+        }
+
+        // Verificar victoria vertical
+        boolean victoriaVertical = true;
+        for (int i = 0; i < 3; i++){
+            if (taulell[i][columna] != jugador){
+                victoriaVertical = false;
+                break;
+            }
+        }
+        if (victoriaVertical){
+            return true;
+        }
+
+        // Verificar victoria diagonal
+        boolean victoriaDiagonal = true;
+        if (fila == columna){
+            for (int i = 0; i < 3; i++){
+                if (taulell[i][i] != jugador){
+                    victoriaDiagonal = false;
+                    break;
+                }
+            }
+            if (victoriaDiagonal){
+                return true;
+            }
+        }
+
+        // Verificar victoria diagonal inversa
+        boolean victoriaDiagonalInversa = true;
+        if (fila + columna == 2) {
+            for (int i = 0; i < 3; i++) {
+                if (taulell[i][2 - i] != jugador) {
+                    victoriaDiagonalInversa = false;
+                    break;
+                }
+            }
+            return victoriaDiagonalInversa;
+        }
+
+        return false;
     }
 
     // DEVOLVER BOOL PARA COMPROBAR SI SE HA PODIDO PONER FICHA O NO

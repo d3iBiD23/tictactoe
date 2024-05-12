@@ -50,7 +50,8 @@ public class TUI {
             }
         }
     }
-     public short[] recollirJugada(Joc joc) {
+
+    public short[] recollirJugada(Joc joc) {
         short fila = -1; // Inicialitza fila amb un valor per defecte, en aquest cas -1.
         short columna = -1; // Inicialitza columna amb un valor per defecte, en aquest cas -1.
         boolean jugadaExitosa = false;
@@ -75,7 +76,7 @@ public class TUI {
         return new short[]{fila,columna};
     }
 
-    public short fiDePartida(short guanyador) throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("Mètode no creat");
+    public void fiDePartida(short guanyador) {
+        System.out.println("El jugador " + (guanyador == 1 ? '1' : '2') + " ha guanyat!");
     }
 }
