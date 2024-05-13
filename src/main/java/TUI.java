@@ -25,24 +25,24 @@ public class TUI {
         }
     }
 
-    // mostra el taulell maequetat amb delimitadors de casella
+    // mostra el taulell maquetat amb delimitadors de casella
     public void mostrarTaulell(char[][] taulell, short torn) {
         System.out.println("Torn del jugador " + (torn == 1 ? '1' : '2'));
 
         for (int i = 0; i < taulell.length; i++) {
-            // Mostrar cada fila del tablero
+            // Mostrar cada fila del taulell
             for (int j = 0; j < taulell[i].length; j++) {
                 System.out.print(taulell[i][j]);
 
-                // Si no es la última columna, añadir una barra vertical
+                // Si no es la última columna, afegir una barra vertical
                 if (j < taulell[i].length - 1) {
                     System.out.print(" | ");
                 }
             }
-            // Nueva línea después de cada fila
+            // Nova línia després de cada fila
             System.out.println();
 
-            // Si no es la última fila, añadir una línea divisoria
+            // Si no és l'última fila, afegir una línia divisòria
             if (i < taulell.length - 1) {
                 System.out.println("---------");
             }

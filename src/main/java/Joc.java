@@ -18,7 +18,7 @@ public class Joc {
                taulell [i][j] = '·';
            }
        }
-        // Inicia la partida amb el torn 1, es a dir, el nostre torn
+        // Inicia la partida amb el torn 1, és a dir, el nostre torn
        torn = 1;
     }
 
@@ -83,14 +83,14 @@ public class Joc {
         return false;
     }
 
-    // DEVOLVER BOOL PARA COMPROBAR SI SE HA PODIDO PONER FICHA O NO
+    // RETORNAR BOOL PARA COMPROVAR SI S'HA POGUT FICAR FITXA O NO
     public boolean jugar(short fila, short columna) {
-        // Si fila esta entre 0 y lo mayor de la tabla (taulell.length)
-        // Si columna esta entre 0 y lo mayor de la tabla (taulell.length)
-        // Pasamos a colocar la ficha
+        // Si fila està entre 0 i taulell.length
+        // Si columna està entre 0 i taulell.length
+        // Passem a col·locar la fitxa.
 
         if (fila >= 0 && fila < taulell.length && columna >= 0 && columna < taulell[fila].length){
-            // Comprobar si la primera casilla es buida
+            // Comprovar si la primera casella es buida
             if (taulell[fila][columna] == '·'){
                 taulell[fila][columna] = (torn == 1) ? 'X' : 'O';
                 torn = (torn == 1 ) ? (short) 2: (short) 1;
@@ -100,7 +100,7 @@ public class Joc {
         return false; // Casella ja ocupada
     }
 
-    // Nou mètode per saber si es empat
+    // Nou mètode per saber si és empat
     public boolean isEmpat(){
         for (char[] fila : taulell) {
             for (char cel : fila) {

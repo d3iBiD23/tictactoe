@@ -25,7 +25,7 @@ public class Main {
         }
     }
 
-    // COMIENZA NUEVA PARTIDA Y DETECTA SI ACABA LA PARTIDA (HAY QUE METERLO EN LA CLASE JOC)
+    // COMENÇA NOVA PARTIDA I DETECTA SI ACABA LA PARTIDA
     private static void novaPartida()  {
         joc.novaPartida();
         boolean partidaAcabada = false;
@@ -49,17 +49,17 @@ public class Main {
     }
 
     private static void carregarPartida() {
-        // Añadir lógica para cargar una partida guardada
+        // Afegir lògica per carregar una partida guardada
         System.out.println("Funcionalitat no implementada.");
     }
 
     private static void configuracio() {
-        // Añadir lógica para configurar el juego
+        // Afegir lògica para configurar el joc
         System.out.println("Funcionalitat no implementada.");
     }
 
     private static void sortir() {
-        System.out.println("Gracias per jugar. ¡Fins ara!");
+        System.out.println("Gràcies per jugar. ¡Fins ara!");
         System.exit(0);
     }
 }
