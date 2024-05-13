@@ -1,5 +1,3 @@
-import jdk.jshell.spi.ExecutionControl;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -74,6 +72,14 @@ public class TUI {
             }
         }
         return new short[]{fila,columna};
+    }
+
+    public void missatgeNoValid(){
+        System.out.println("Opció no vàlida. Torna a intentar.");
+    }
+
+    public void missatgeEmpat(){
+        System.out.println("Ningú ha guanyat, partida empatada.");
     }
 
     public void fiDePartida(short guanyador) {

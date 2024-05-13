@@ -1,5 +1,3 @@
-import jdk.jshell.spi.ExecutionControl;
-
 public class Joc {
     private char[][] taulell;
     private short torn;
@@ -87,14 +85,30 @@ public class Joc {
 
     // DEVOLVER BOOL PARA COMPROBAR SI SE HA PODIDO PONER FICHA O NO
     public boolean jugar(short fila, short columna) {
+        // Si fila esta entre 0 y lo mayor de la tabla (taulell.length)
+        // Si columna esta entre 0 y lo mayor de la tabla (taulell.length)
+        // Pasamos a colocar la ficha
 
-        // Comprobar si la primera casilla es buida
-        if (taulell[fila][columna] == '·'){
-            taulell[fila][columna] = (torn == 1) ? 'X' : 'O';
-            torn = (torn == 1 ) ? (short) 2: (short) 1;
-            return true; // jugada exitosa
+        if (fila >= 0 && fila < taulell.length && columna >= 0 && columna < taulell[fila].length){
+            // Comprobar si la primera casilla es buida
+            if (taulell[fila][columna] == '·'){
+                taulell[fila][columna] = (torn == 1) ? 'X' : 'O';
+                torn = (torn == 1 ) ? (short) 2: (short) 1;
+                return true; // jugada exitosa
+            }
         }
         return false; // Casella ja ocupada
     }
 
+    // Nou mètode per saber si es empat
+    public boolean isEmpat(){
+        for (char[] fila : taulell) {
+            for (char cel : fila) {
+                if (cel == '·') {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

@@ -1,6 +1,3 @@
-import jdk.jshell.spi.ExecutionControl;
-import java.util.InputMismatchException;
-
 public class Main {
     static Joc joc = new Joc();
     static TUI tui = new TUI();
@@ -22,7 +19,7 @@ public class Main {
                         sortir();
                         break;
                     default:
-                        System.out.println("Opció no vàlida. Torna a intentar.");
+                        tui.missatgeNoValid();
                         break;
                 }
         }
@@ -43,24 +40,12 @@ public class Main {
                 tui.mostrarTaulell(joc.getTaulell(), joc.getTorn());
                 tui.fiDePartida(joc.getTorn() == 1 ? (short) 2 : (short) 1);
                 partidaAcabada = true;
-            } else if (isEmpat()) {
+            } else if (joc.isEmpat()) {
                 tui.mostrarTaulell(joc.getTaulell(), joc.getTorn());
+                tui.missatgeEmpat();
                 partidaAcabada = true;
             }
         }
-    }
-
-    // Nou mètode per saber si es empat
-    private static boolean isEmpat(){
-        char[][] taulell = joc.getTaulell();
-        for (char[] fila : taulell) {
-            for (char cel : fila) {
-                if (cel == '·') {
-                    return false;
-                }
-            }
-        }
-        return true;
     }
 
     private static void carregarPartida() {
