@@ -1,4 +1,8 @@
 import jdk.jshell.spi.ExecutionControl;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 public class Joc {
     private char[][] taulell;
@@ -10,6 +14,13 @@ public class Joc {
 
     public short getTorn() {
         return torn;
+    }
+
+    public void archiuMidaTaulell(short mida) throws IOException {
+        File midaTaulell = new File("conifg.txt");
+        FileWriter wrtTaulell = new FileWriter("config.txt");
+        wrtTaulell.write(""+mida);
+        wrtTaulell.close();
     }
 
     public void novaPartida(){

@@ -1,30 +1,32 @@
 import jdk.jshell.spi.ExecutionControl;
+
+import java.io.IOException;
 import java.util.InputMismatchException;
 
 public class Main {
     static Joc joc = new Joc();
     static TUI tui = new TUI();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         while (true) {
             int opcio = tui.mostrarMenu();
-                switch (opcio) {
-                    case 1:
-                        novaPartida();
-                        break;
-                    case 2:
-                        carregarPartida();
-                        break;
-                    case 3:
-                        configuracio();
-                        break;
-                    case 4:
-                        sortir();
-                        break;
-                    default:
-                        System.out.println("Opció no vàlida. Torna a intentar.");
-                        break;
-                }
+            switch (opcio) {
+                case 1:
+                    novaPartida();
+                    break;
+                case 2:
+                    carregarPartida();
+                    break;
+                case 3:
+                    configuracio();
+                    break;
+                case 4:
+                    sortir();
+                    break;
+                default:
+                    System.out.println("Opció no vàlida. Torna a intentar.");
+                    break;
+            }
         }
     }
 
@@ -68,9 +70,22 @@ public class Main {
         System.out.println("Funcionalitat no implementada.");
     }
 
-    private static void configuracio() {
-        // Añadir lógica para configurar el juego
-        System.out.println("Funcionalitat no implementada.");
+    private static void configuracio() throws IOException {
+        boolean sortirConfig = false;
+        while (!sortirConfig) {
+            int opcio = tui.mostrarMenuConfig();
+            switch (opcio) {
+                case 1:
+                joc.archiuMidaTaulell(tui.MenuMidaTaulell());
+                break;
+                case 2:
+                    sortirConfig = true;
+                    break;
+                default:
+                    System.out.println("Opció no vàlida. Torna a intentar.");
+                    break;
+            }
+        }
     }
 
     private static void sortir() {
