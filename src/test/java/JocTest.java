@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 public class JocTest {
 
-    // Comprovar que el tablero se genera limpio (nadie ha jugado)
+    // Comprovar que el taulell es genera net (ningú ha jugat)
     @Test
     void testNovaPartida_taulell() {
         Joc joc = new Joc();
@@ -19,7 +19,7 @@ public class JocTest {
         Assertions.assertArrayEquals(taulellNet,joc.getTaulell());
     }
 
-    // Comprovar que es el turno 1
+    // Comprovar que és el torn 1
     @Test
     void testNovaPartida_torn() {
         Joc joc = new Joc();
