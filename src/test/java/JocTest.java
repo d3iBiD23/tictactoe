@@ -3,7 +3,25 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class JocTest {
+
+    @Test
+    void creacioFicherTaulell() throws IOException {
+        // Elimina el archivo si ya existe
+        File configFile = new File("config.txt");
+        if (configFile.exists()) {
+            configFile.delete();
+        }
+        Joc joc = new Joc();
+        boolean result = joc.archiuMidaTaulell((short) 5);
+
+        Assertions.assertTrue(result);
+        Assertions.assertTrue(configFile.exists());
+    }
 
     // Comprovar que el taulell es genera net (ningú ha jugat)
     @Test

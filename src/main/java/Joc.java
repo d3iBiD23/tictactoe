@@ -16,11 +16,11 @@ public class Joc {
         return torn;
     }
 
-    public void archiuMidaTaulell(short mida) throws IOException {
-        File midaTaulell = new File("conifg.txt");
+    public boolean archiuMidaTaulell(short mida) throws IOException {
         FileWriter wrtTaulell = new FileWriter("config.txt");
         wrtTaulell.write(""+mida);
         wrtTaulell.close();
+        return true;
     }
 
     public void novaPartida(){
