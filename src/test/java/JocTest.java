@@ -25,7 +25,7 @@ public class JocTest {
 
     // Comprovar que el taulell es genera net (ningú ha jugat)
     @Test
-    void testNovaPartida_taulell() {
+    void testNovaPartida_taulell() throws IOException {
         Joc joc = new Joc();
         joc.novaPartida();
 
@@ -39,7 +39,7 @@ public class JocTest {
 
     // Comprovar que és el torn 1
     @Test
-    void testNovaPartida_torn() {
+    void testNovaPartida_torn() throws IOException {
         Joc joc = new Joc();
         joc.novaPartida();
 
@@ -55,7 +55,7 @@ public class JocTest {
                 "0,0", "0,1", "0,2",
                 "1,0", "1,1", "1,2",
                 "2,0", "2,1", "2,2"})
-    void testJugadaGuanyadora_taulell_net(short fila, short columna) {
+    void testJugadaGuanyadora_taulell_net(short fila, short columna) throws IOException {
         Joc joc = new Joc();
         joc.novaPartida();
 
@@ -71,7 +71,7 @@ public class JocTest {
                 "0,0", "0,1", "0,2",
                 "1,0", "1,1", "1,2",
                 "2,0", "2,1", "2,2"})
-    void testJugadaGuanyadora_una_casella_ocupada(short fila, short columna) {
+    void testJugadaGuanyadora_una_casella_ocupada(short fila, short columna) throws IOException {
         Joc joc = new Joc();
         joc.novaPartida();
         joc.jugar((short)0,(short)1); // J1
@@ -98,7 +98,7 @@ public class JocTest {
             "0,0,1,1,2,2",
             "0,2,1,1,2,0"
     })
-    void testJugadaGuanyadora_caselles_ocupades_j1(short jugada1Fila, short jugada1Col, short jugada2Fila, short jugada2Col, short jugadaGuanyadoraFila, short jugadaGuanyadoraCol) {
+    void testJugadaGuanyadora_caselles_ocupades_j1(short jugada1Fila, short jugada1Col, short jugada2Fila, short jugada2Col, short jugadaGuanyadoraFila, short jugadaGuanyadoraCol) throws IOException {
         Joc joc = new Joc();
         joc.novaPartida();
 
@@ -130,7 +130,7 @@ public class JocTest {
             "0,0,1,1,2,2",
 //          "0,2,1,1,2,0"
     })
-    void testJugadaGuanyadora_caselles_ocupades_j2(short jugada1Fila, short jugada1Col, short jugada2Fila, short jugada2Col, short jugadaGuanyadoraFila, short jugadaGuanyadoraCol) {
+    void testJugadaGuanyadora_caselles_ocupades_j2(short jugada1Fila, short jugada1Col, short jugada2Fila, short jugada2Col, short jugadaGuanyadoraFila, short jugadaGuanyadoraCol) throws IOException {
         Joc joc = new Joc();
         joc.novaPartida();
 
@@ -148,7 +148,7 @@ public class JocTest {
     }
 
     @Test
-    void jugar_torn1() {
+    void jugar_torn1() throws IOException {
         Joc joc = new Joc();
         joc.novaPartida();
         joc.jugar((short) 0,(short) 0);
@@ -164,7 +164,7 @@ public class JocTest {
     }
 
     @Test
-    void jugar_torn2() {
+    void jugar_torn2() throws IOException {
         Joc joc = new Joc();
         joc.novaPartida();
         joc.jugar((short) 0,(short) 0);
@@ -181,7 +181,7 @@ public class JocTest {
 
     @ParameterizedTest
     @CsvSource({"0,0","0,1","0,2","1,0","1,1","1,2","2,0","2,1","2,2"})
-    void jugar_qualsevol_pos_j1(short fila, short columna){
+    void jugar_qualsevol_pos_j1(short fila, short columna) throws IOException {
         Joc joc = new Joc();
         joc.novaPartida();
         joc.jugar(fila,columna);
@@ -198,7 +198,7 @@ public class JocTest {
 
     @ParameterizedTest
     @CsvSource({"0,1","0,2","1,0","1,1","1,2","2,0","2,1","2,2"})
-    void jugar_qualsevol_pos_j2(short fila, short columna){
+    void jugar_qualsevol_pos_j2(short fila, short columna) throws IOException {
         Joc joc = new Joc();
         joc.novaPartida();
         joc.jugar((short)0,(short)0);

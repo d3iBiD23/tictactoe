@@ -47,7 +47,14 @@ public class TUI {
 
             // Si no es la última fila, añadir una línea divisoria
             if (i < taulell.length - 1) {
-                System.out.println("---------");
+                for (int j = 0; j < taulell.length; j++){
+                    if (j == taulell.length -1 ){
+                        System.out.print("---");
+                        System.out.println("");
+                    }else{
+                        System.out.print("----");
+                    }
+                }
             }
         }
     }
