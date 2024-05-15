@@ -31,7 +31,7 @@ public class Main {
     }
 
     // COMIENZA NUEVA PARTIDA Y DETECTA SI ACABA LA PARTIDA (HAY QUE METERLO EN LA CLASE JOC)
-    private static void novaPartida()  {
+    private static void novaPartida() throws IOException {
         joc.novaPartida();
         boolean partidaAcabada = false;
 
