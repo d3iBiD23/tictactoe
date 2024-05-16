@@ -2,6 +2,13 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import jdk.jshell.spi.ExecutionControl;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+
 public class Joc {
     private char[][] taulell;
     private short torn;
@@ -14,9 +21,24 @@ public class Joc {
         return torn;
     }
 
-    public void novaPartida(){
-       // genera un taulell de 3x3 amb punts
-       taulell = new char[3][3];
+    public boolean archiuMidaTaulell(short mida) throws IOException {
+        FileWriter wrtTaulell = new FileWriter("config.txt");
+        wrtTaulell.write(""+mida);
+        wrtTaulell.close();
+        return true;
+    }
+
+    public short llegirMidaTaulell() throws IOException {
+        File config = new File("config.txt");
+        Scanner sc = new Scanner(config);
+        short valor = sc.nextShort();
+        return valor;
+    }
+
+    public void novaPartida() throws IOException {
+        short mida = llegirMidaTaulell();
+       // genera un taulell de mida X mida amb punts
+       taulell = new char[mida][mida];
        for (int i = 0; i < taulell.length; i++){
            for (int j = 0; j < taulell.length; j++){
                taulell [i][j] = '·';

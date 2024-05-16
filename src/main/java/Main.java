@@ -1,10 +1,15 @@
 import java.io.*;
 
+import jdk.jshell.spi.ExecutionControl;
+
+import java.io.IOException;
+import java.util.InputMismatchException;
+
 public class Main {
     static Joc joc = new Joc();
     static TUI tui = new TUI();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         while (true) {
             int opcio = tui.mostrarMenu();
             switch (opcio) {
@@ -99,9 +104,22 @@ public class Main {
         }
     }
 
-    private static void configuracio() {
-        // Afegir lògica para configurar el joc
-        System.out.println("Funcionalitat no implementada.");
+    private static void configuracio() throws IOException {
+        boolean sortirConfig = false;
+        while (!sortirConfig) {
+            int opcio = tui.mostrarMenuConfig();
+            switch (opcio) {
+                case 1:
+                joc.archiuMidaTaulell(tui.MenuMidaTaulell());
+                break;
+                case 2:
+                    sortirConfig = true;
+                    break;
+                default:
+                    System.out.println("Opció no vàlida. Torna a intentar.");
+                    break;
+            }
+        }
     }
 
     private static void sortir() {

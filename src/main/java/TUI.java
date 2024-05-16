@@ -1,3 +1,6 @@
+import jdk.jshell.spi.ExecutionControl;
+
+import java.sql.SQLOutput;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -54,7 +57,14 @@ public class TUI {
 
             // Si no és l'última fila, afegir una línia divisòria
             if (i < taulell.length - 1) {
-                System.out.println("---------");
+                for (int j = 0; j < taulell.length; j++){
+                    if (j == taulell.length -1 ){
+                        System.out.print("---");
+                        System.out.println("");
+                    }else{
+                        System.out.print("----");
+                    }
+                }
             }
         }
     }
@@ -109,5 +119,46 @@ public class TUI {
 
     public void comiat(){
         System.out.println("Gràcies per jugar. ¡Fins ara!");
+    }
+
+    public short mostrarMenuConfig() {
+        sc = new Scanner(System.in);
+
+        System.out.println("CONFIGURACIÓ");
+        System.out.println("-------------");
+        System.out.println("La mida predeterminada del taulell és 3");
+        System.out.println(" ");
+        System.out.println("1) Cambiar mida taulell");
+        System.out.println("2) Tornar Enrere");
+        System.out.println(" ");
+        System.out.println("Escull una opció: ");
+
+        try {
+            return sc.nextShort();
+        }catch (InputMismatchException ex){
+            sc.next();  // netejar entrada no vàlida
+            return -1;
+        }
+    }
+
+    public short MenuMidaTaulell() {
+        sc = new Scanner(System.in);
+
+        System.out.println("Escull la mida del taulell: (Min 3 - Max 10)");
+        System.out.println("---------------------");
+        System.out.println("Escull una mida: ");
+        try {
+            short opcion = sc.nextShort();
+            if (opcion < 3 || opcion > 10){
+                System.out.println("Mida introduida no valida. Prova amb un altre");
+            }else{
+                System.out.println("Mida cambiada correctement! La mida actual és " + opcion);
+                return opcion;
+            }
+        }catch (InputMismatchException ex){
+            sc.next();  // netejar entrada no vàlida
+            return -1;
+        }
+        return 0;
     }
 }
