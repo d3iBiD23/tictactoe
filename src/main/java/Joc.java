@@ -1,3 +1,7 @@
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Joc {
     private char[][] taulell;
     private short torn;
@@ -110,5 +114,64 @@ public class Joc {
             }
         }
         return true;
+    }
+    public void desarPartida(){
+        try {
+            // Crear directori "savedgames" si no existeix
+            File directori = new File("savedgames");
+            if (!directori.exists()){
+                directori.mkdir();
+            }
+            // Crear nom d'arxiu amb la data actual
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+            String nomFitxer = dateFormat.format(new Date());
+
+            // Escriure l'estat del joc en l'arxiu
+            FileWriter writer = new FileWriter("savedgames/" + nomFitxer);
+            writer.write(torn + "\n"); // Desar el torn del jugador
+            for (char[] fila : taulell){
+                for (char cel : fila){
+                    writer.write(cel);
+                }
+                writer.write("\n");
+            }
+            writer.close();
+
+        }catch (IOException e){
+            System.out.println("Error al desar partida");
+        }
+    }
+    public boolean carregarPartida(String nomFitxer){
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("savedgames/" + nomFitxer));
+            torn = Short.parseShort(reader.readLine());
+            taulell = new char[3][3]; // Iniciem el taulell abans de carregar les dades
+
+            for (int i = 0; i < 3; i++){
+                String fila = reader.readLine();
+                for (int j = 0; j < 3; j++){
+                    taulell[i][j] = fila.charAt(j);
+                }
+            }
+            reader.close();
+            return true;
+
+        }catch (IOException e){
+            System.out.println("Error al carregar partida");
+            return false;
+        }
+    }
+
+    public void llistarPartides(){
+        File directori = new File("savedgames");
+        String[] fitxers = directori.list();
+        if (fitxers != null && fitxers.length > 0) {
+            System.out.println("Partides guardades:");
+            for (int i = 0; i < fitxers.length; i++) {
+                System.out.println((i + 1) + ") " + fitxers[i]);
+            }
+        } else {
+            System.out.println("No hi ha partides guardades.");
+        }
     }
 }

@@ -24,6 +24,16 @@ public class TUI {
             return -1;
         }
     }
+    public short demanarOpcioCarregarPartida(){
+        sc = new Scanner(System.in);
+        System.out.println("Escull una partida per carregar (introdueix el número): ");
+        try {
+            return sc.nextShort();
+        }catch (InputMismatchException ex){
+            sc.next();
+            return -1;
+        }
+    }
 
     // mostra el taulell maquetat amb delimitadors de casella
     public void mostrarTaulell(char[][] taulell, short torn) {
@@ -56,10 +66,17 @@ public class TUI {
 
         while (!jugadaExitosa){
             try {
-                System.out.println("Introdueix la fila (0, 1, 2): ");
+
+                System.out.println("Introdueix la fila (0, 1, 2) o -1 per desar partida");
                 fila = sc.nextShort();
-                System.out.println("Introdueix la columna (0, 1, 2): ");
+                System.out.println("Introdueix la columna (0, 1, 2) o -1 un altre cop per desar partida ");
                 columna = sc.nextShort();
+
+                if (fila == -1 && columna == -1){
+                    System.out.println("S'ha desat la partida!");
+                    joc.desarPartida();
+                    continue;
+                }
 
                 jugadaExitosa = joc.jugar(fila,columna);
 
@@ -84,5 +101,13 @@ public class TUI {
 
     public void fiDePartida(short guanyador) {
         System.out.println("El jugador " + (guanyador == 1 ? '1' : '2') + " ha guanyat!");
+    }
+
+    public void missatgeDesat(){
+        System.out.println("Partida desada correctament.");
+    }
+
+    public void comiat(){
+        System.out.println("Gràcies per jugar. ¡Fins ara!");
     }
 }

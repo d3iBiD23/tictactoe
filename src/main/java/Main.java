@@ -1,3 +1,5 @@
+import java.io.*;
+
 public class Main {
     static Joc joc = new Joc();
     static TUI tui = new TUI();
@@ -5,23 +7,23 @@ public class Main {
     public static void main(String[] args) {
         while (true) {
             int opcio = tui.mostrarMenu();
-                switch (opcio) {
-                    case 1:
-                        novaPartida();
-                        break;
-                    case 2:
-                        carregarPartida();
-                        break;
-                    case 3:
-                        configuracio();
-                        break;
-                    case 4:
-                        sortir();
-                        break;
-                    default:
-                        tui.missatgeNoValid();
-                        break;
-                }
+            switch (opcio) {
+                case 1:
+                    novaPartida();
+                    break;
+                case 2:
+                    carregarPartida();
+                    break;
+                case 3:
+                    configuracio();
+                    break;
+                case 4:
+                    sortir();
+                    break;
+                default:
+                    tui.missatgeNoValid();
+                    break;
+            }
         }
     }
 
@@ -33,6 +35,12 @@ public class Main {
         while (!partidaAcabada){
             tui.mostrarTaulell(joc.getTaulell(), joc.getTorn());
             short[] jugada = tui.recollirJugada(joc);
+
+            if (jugada[0] == -1 && jugada[1] == -1){
+                joc.desarPartida();
+                partidaAcabada = true;
+                continue;
+            }
 
             joc.jugar(jugada[0], jugada[1]);
 
@@ -47,10 +55,48 @@ public class Main {
             }
         }
     }
-
     private static void carregarPartida() {
-        // Afegir lògica per carregar una partida guardada
-        System.out.println("Funcionalitat no implementada.");
+        joc.llistarPartides();
+        String[] fitxers = (new File("savedgames").list());
+
+        if (fitxers != null && fitxers.length > 0){
+            short opcio = tui.demanarOpcioCarregarPartida();
+            if (opcio > 0 && opcio <= fitxers.length){
+                if (joc.carregarPartida(fitxers[opcio - 1])){
+                    tui.missatgeDesat();
+                    continuarPartida();
+                    return;
+                }
+            }
+        }
+        tui.missatgeNoValid();
+    }
+    private static void continuarPartida(){
+        boolean partidaAcabada = false;
+
+        while (!partidaAcabada){
+            tui.mostrarTaulell(joc.getTaulell(), joc.getTorn());
+            short[] jugada = tui.recollirJugada(joc);
+
+            if (jugada[0] == -1 && jugada[1] == -1){
+                joc.desarPartida();
+                tui.missatgeDesat();
+                partidaAcabada = true;
+                continue;
+            }
+
+            joc.jugar(jugada[0], jugada[1]);
+
+            if (joc.jugadaGuanyadora(jugada[0],jugada[1])){
+                tui.mostrarTaulell(joc.getTaulell(), joc.getTorn());
+                tui.fiDePartida(joc.getTorn() == 1 ? (short)2 : (short) 1);
+                partidaAcabada = true;
+            } else if (joc.isEmpat()) {
+                tui.mostrarTaulell(joc.getTaulell(), joc.getTorn());
+                tui.missatgeEmpat();
+                partidaAcabada = true;
+            }
+        }
     }
 
     private static void configuracio() {
@@ -59,7 +105,7 @@ public class Main {
     }
 
     private static void sortir() {
-        System.out.println("Gràcies per jugar. ¡Fins ara!");
+        tui.comiat();
         System.exit(0);
     }
 }
