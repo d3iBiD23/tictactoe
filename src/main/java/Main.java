@@ -1,9 +1,5 @@
 import java.io.*;
-
-import jdk.jshell.spi.ExecutionControl;
-
 import java.io.IOException;
-import java.util.InputMismatchException;
 
 public class Main {
     static Joc joc = new Joc();
@@ -33,7 +29,7 @@ public class Main {
     }
 
     // COMENÇA NOVA PARTIDA I DETECTA SI ACABA LA PARTIDA
-    private static void novaPartida()  {
+    private static void novaPartida() throws IOException {
         joc.novaPartida();
         boolean partidaAcabada = false;
 
