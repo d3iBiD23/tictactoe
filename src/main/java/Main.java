@@ -112,7 +112,7 @@ public class Main {
                     sortirConfig = true;
                     break;
                 default:
-                    System.out.println("Opció no vàlida. Torna a intentar.");
+                    tui.missatgeNoValid();
                     break;
             }
         }

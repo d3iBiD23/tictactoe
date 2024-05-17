@@ -149,7 +149,7 @@ public class Joc {
             // Escriure l'estat del joc en l'arxiu
             FileWriter writer = new FileWriter("savedgames/" + nomFitxer);
             writer.write(torn + "\n"); // Desar el torn del jugador
-            writer.write(taulell.length + "\n"); // Desar el torn del jugador
+            writer.write(taulell.length + "\n"); // Desar la mida del taulell
             for (char[] fila : taulell){
                 for (char cel : fila){
                     writer.write(cel);

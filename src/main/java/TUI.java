@@ -74,9 +74,9 @@ public class TUI {
         while (!jugadaExitosa){
             try {
 
-                System.out.println("Introdueix la fila (0, 1, 2) o -1 per desar partida");
+                System.out.println("Introdueix la fila o -1 per desar partida");
                 fila = sc.nextShort();
-                System.out.println("Introdueix la columna (0, 1, 2) o -1 un altre cop per desar partida ");
+                System.out.println("Introdueix la columna o -1 un altre cop per desar partida ");
                 columna = sc.nextShort();
 
                 if (fila == -1 && columna == -1){

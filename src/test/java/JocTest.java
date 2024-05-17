@@ -3,9 +3,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.SimpleTimeZone;
 
 public class JocTest {
 
@@ -212,5 +213,117 @@ public class JocTest {
 
         taulell_esperat[fila][columna] = 'O';
         Assertions.assertArrayEquals(taulell_esperat, joc.getTaulell());
+    }
+
+    /*
+        Test per verificar que el directori es crea correctament
+        fent la crida al metode desar partida.
+        Evidentment per revisar-ho abans hem de revisar si el directori
+        no ha sigut creat ja.
+     */
+    @Test
+    void desarPartida_directoriTest() throws IOException {
+        Joc joc = new Joc();
+
+        File directori = new File("savedgames");
+
+        // Esborrar directori savedgames si el directori existeix abans de cridar el metode
+        if (directori.exists()){
+            directori.delete();
+        }
+
+        // Generar una nova partida per que es pugui desar
+        joc.novaPartida();
+        joc.jugar((short)2,(short)2); // J1
+        joc.jugar((short)2,(short)1); // J2
+        joc.jugar((short)0,(short)2); // J1
+
+        // Cridar el metode que haura de crear el directori
+        joc.desarPartida();
+
+        // Verificar si el directori savedgames s'ha creat
+        Assertions.assertTrue(directori.exists());
+    }
+
+    /*
+        Test per verificar que l'arxiu es genera dintre del
+        directori savedgames
+     */
+    @Test
+    void desarPartida_arxiuTest() throws IOException {
+        Joc joc = new Joc();
+
+        // Generar una nova partida per que es pugui desar
+        joc.novaPartida();
+        joc.jugar((short)2,(short)2); // J1
+        joc.jugar((short)2,(short)1); // J2
+        joc.jugar((short)0,(short)2); // J1
+
+        joc.desarPartida();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        String nomFitxer = dateFormat.format(new Date());
+        File arxiu = new File("savedgames/" + nomFitxer);
+        Assertions.assertTrue(arxiu.exists());
+    }
+    /*
+        Verificar la integritat de l'arxiu sigui correcte
+     */
+    @Test
+    public void desarPartida_ContingutTest() throws IOException{
+        Joc joc = new Joc();
+
+        // Generar una nova partida per que es pugui desar
+        joc.novaPartida();
+        joc.jugar((short)2,(short)2); // J1
+        joc.jugar((short)2,(short)1); // J2
+        joc.jugar((short)0,(short)2); // J1
+
+        joc.desarPartida();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        String nomFitxer = dateFormat.format(new Date());
+        BufferedReader reader = new BufferedReader(new FileReader("savedgames/" + nomFitxer));
+
+        // Verificar torn del jugador
+        Assertions.assertEquals(joc.getTorn(), Character.getNumericValue(reader.read()));
+        reader.readLine(); // Consumir una linia
+        reader.readLine(); // Llegir la mida del taulell
+
+        // Verificar el contingut del taulell
+        char[][] taulellEsperat = joc.getTaulell();
+        char[][] taulellActual = llegirTaulellArxiu(reader, taulellEsperat.length);
+        Assertions.assertTrue(taulellsIguals(taulellEsperat,taulellActual));
+        reader.close();
+    }
+
+    private char[][] llegirTaulellArxiu(BufferedReader reader, int files) throws IOException{
+        char[][] board = new char[files][];
+        for (int i = 0; i < files; i++){
+            String fila = reader.readLine();
+            board[i] = fila.toCharArray();
+        }
+        return board;
+    }
+
+    private boolean taulellsIguals(char[][] esperat, char[][] actual){
+        if (esperat.length != actual.length || esperat[0].length != actual[0].length){
+            return false;
+        }
+        for (int i = 0; i < esperat.length; i++) {
+            for (int j = 0; j < esperat[i].length; j++) {
+                if (esperat[i][j] != actual[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    @Test
+    void carregarPartida() {
+    }
+
+    @Test
+    void llistarPartides() {
     }
 }
