@@ -149,6 +149,7 @@ public class Joc {
             // Escriure l'estat del joc en l'arxiu
             FileWriter writer = new FileWriter("savedgames/" + nomFitxer);
             writer.write(torn + "\n"); // Desar el torn del jugador
+            writer.write(taulell.length + "\n"); // Desar el torn del jugador
             for (char[] fila : taulell){
                 for (char cel : fila){
                     writer.write(cel);
@@ -165,11 +166,14 @@ public class Joc {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("savedgames/" + nomFitxer));
             torn = Short.parseShort(reader.readLine());
-            taulell = new char[3][3]; // Iniciem el taulell abans de carregar les dades
 
-            for (int i = 0; i < 3; i++){
+            int mida = Integer.parseInt(reader.readLine());
+
+            taulell = new char[mida][mida]; // Iniciem el taulell abans de carregar les dades
+
+            for (int i = 0; i < mida; i++){
                 String fila = reader.readLine();
-                for (int j = 0; j < 3; j++){
+                for (int j = 0; j < mida; j++){
                     taulell[i][j] = fila.charAt(j);
                 }
             }
